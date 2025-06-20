@@ -1,0 +1,11 @@
+sudo nmap $IP -p111,2049 -sV -sC --script nfs*
+ 
+mkdir target-NFS
+sudo mount -t nfs $IP:/ ./target-NFS/ -o nolock
+cd target-NFS
+tree .
+ls -l mnt/nfsshare/
+ls -n mnt/nfsshare/
+ 
+cd ..
+sudo umount ./target-NFS 
